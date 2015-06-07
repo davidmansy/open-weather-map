@@ -2,9 +2,10 @@
 <html ng-app="OWMApp">
 <head lang="en">
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="assets/css/styles.css"/>
   <title>Open Weather Map</title>
 </head>
-<body>
+<body ng-class="{loading : isLoading}">
 <a href="#/cities/New_York">New York</a>
 <a href="#/cities/Dallas">Dallas</a>
 <a href="#/cities/Chicago">Chicago</a>

@@ -8,7 +8,7 @@ angular
   .run(ListenRoutingErrors);
 
 Routing.$inject = ['$routeProvider'];
-ListenRoutingErrors.$inject = ['$rootScope', '$location'];
+ListenRoutingErrors.$inject = ['$rootScope', '$location', '$timeout'];
 
 function Routing($routeProvider) {
   $routeProvider.when('/', {
@@ -35,8 +35,16 @@ function Routing($routeProvider) {
   });
 }
 
-function ListenRoutingErrors($rootScope, $location) {
+function ListenRoutingErrors($rootScope, $location, $timeout) {
   $rootScope.$on('$routeChangeError', function() {
     $location.path('/error');
   });
+  $rootScope.$on('$routeChangeStart', function () {
+    $rootScope.isLoading = true;
+  });
+  $rootScope.$on('$routeChangeSuccess', function () {
+    $timeout(function () {
+      $rootScope.isLoading = false;
+    }, 1000);
+  })
 }

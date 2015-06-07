@@ -2,7 +2,7 @@
  * Created by davidmansy on 26/05/15.
  */
 angular
-  .module('OWMApp', ['ngRoute'])
+  .module('OWMApp', ['ngRoute', 'ngAnimate'])
   .value('owmCities', ['New York', 'Chicago', 'Dallas'])
   .config(Routing)
   .run(ListenRoutingErrors);
